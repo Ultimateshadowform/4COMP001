@@ -1,0 +1,8 @@
+# Python and our tools made files
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.venv/
+
+# The data file holds peoples data so it doesnt go on github
+budget_data.json
