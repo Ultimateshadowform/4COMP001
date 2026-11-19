@@ -13,4 +13,4 @@ Software Development (COMP4-02555), Assignment 2 - Group Coursework.
 | Designer | |
 | Lead Coder | Oliver Peploe |
 | Tester | |
-| GitHub Manager | |
+| Manual Tester | |
