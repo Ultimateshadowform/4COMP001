@@ -9,7 +9,7 @@ Software Development (COMP4-02555), Assignment 2 - Group Coursework.
 | Role | Name |
 |---|---|
 | Organiser | |
-| Researcher | |
+| Researcher | |Glenn Chitepo|
 | Designer | |
 | Lead Coder | Oliver Peploe |
 | Tester | |
