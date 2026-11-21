@@ -8,7 +8,7 @@ Software Development (COMP4-02555), Assignment 2 - Group Coursework.
 
 |Role|Name|
 |-|-|
-|Organiser||
+|Organiser||Hena Dale|
 |Researcher|Glenn Chitepo|
 |Designer||
 |Lead Coder|Oliver Peploe|
