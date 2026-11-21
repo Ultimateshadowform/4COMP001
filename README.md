@@ -17,5 +17,3 @@ Software Development (COMP4-02555), Assignment 2 - Group Coursework.
 
 
 
-example
-
