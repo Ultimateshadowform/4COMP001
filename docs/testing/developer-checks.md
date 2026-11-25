@@ -24,18 +24,18 @@ Ruff (`python -m ruff check`): all checks passed.
 
 ## Card 12: Log in and Create an account (25th November 2026)
 
-Tested in the browser by running the app on my laptop (`python -m streamlit run app.py`).
+All checks were tested in the browser by running the app on my laptop (`python -m streamlit run app.py`).
 
 | # | What I checked | What should happen | Result |
 |---|---|---|---|
 | 1 | Ruff on `budget.py` after commit 1 | No problems | **Bug found:** Ruff said `hashlib` wasn't imported (F821), so creating an account would have crashed. I added `import hashlib` (commit e23735e) and Ruff then passed |
-| 2 | Create an account with a 7-character password | Red message: at least 8 characters | |
-| 3 | Create an account with two different passwords | Red message: the passwords are not the same | |
-| 4 | Create the account oliver01 properly | Logged in straight away, with the menu on the left | |
+| 2 | Create an account with a 7-character password | Red message: at least 8 characters | Pass: "Your password must be at least 8 characters long." |
+| 3 | Create an account with two different passwords | Red message: the passwords are not the same | Pass: "The two passwords are not the same." |
+| 4 | Create the account oliver01 properly | Logged in straight away, with the menu on the left | Pass |
 | 5 | Create Oliver01 (with a capital) when oliver01 already exists | Red message: that username is already taken | Pass |
-| 6 | Log in with the wrong password | Red message: the username or password is not right | |
+| 6 | Log in with the wrong password | Red message: the username or password is not right | Pass: "The username or password is not right." |
 | 7 | Log in as oliver01 with the right password | Logged in, with the menu on the left | Pass |
 
 Screenshots: `screenshots/card-12-username-check.png` (check 5) and `screenshots/card-12-login-check.png` (check 7)
 
-Ruff (`python -m ruff check`): 
+Ruff (`python -m ruff check`): all checks passed.
