@@ -1,3 +1,5 @@
+import hashlib
+
 CATEGORIES = ["Food", "Transport", "Going out", "Shopping", "Bills", "Course costs", "Other"]
 
 
