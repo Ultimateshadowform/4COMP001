@@ -38,8 +38,31 @@ def set_budget(username, weekly_budget, filename=DATA_FILE):
 
 
 def add_spending(username, amount, category, spent_on, note, filename=DATA_FILE):
-    pass
+    """Save one thing that the user spent money on."""
+    data = load_data(filename)
+    spending = data[username]["spending"]
+    if len(spending) == 0:
+        new_id = 1
+    else:
+        new_id = spending[-1]["id"] + 1  # one more than the last entry's number
+    new_entry = {
+        "id": new_id,
+        "date": spent_on.isoformat(),
+        "category": category,
+        "amount": amount,
+        "note": note.strip(),
+    }
+    spending.append(new_entry)
+    save_data(data, filename)
 
 
 def delete_spending(username, entry_id, filename=DATA_FILE):
-    pass
+    """Removes one entry, gives back True if it was found, otherwise False."""
+    data = load_data(filename)
+    spending = data[username]["spending"]
+    for entry in spending:
+        if entry["id"] == entry_id:
+            spending.remove(entry)
+            save_data(data, filename)
+            return True
+    return False
