@@ -1,8 +1,45 @@
 import streamlit as st
 
+import budget
+import storage
+
 
 def show_log_in():
-    st.write("Log in page: coming soon.")
+    """The Log in and Create an account forms, shown until someone logs in."""
+    st.write("Keep track of what you spend each week, so your money lasts until the next loan payment.")
+    log_in_tab, sign_up_tab = st.tabs(["Log in", "Create an account"])
+
+    with log_in_tab:
+        with st.form("log_in_form"):
+            username = st.text_input("Username")
+            password = st.text_input("Password", type="password")
+            pressed = st.form_submit_button("Log in", type="primary")
+        if pressed:
+            username = budget.clean_username(username)
+            user = storage.get_user(username)
+            if user is not None and user["password_hash"] == budget.hash_password(password):
+                st.session_state["username"] = username
+                st.rerun()
+            else:
+                st.error("The username or password is not right.")
+
+    with sign_up_tab:
+        with st.form("sign_up_form"):
+            new_username = st.text_input("Choose a username", help="3 to 20 letters and numbers")
+            new_password = st.text_input("Choose a password", type="password", help="At least 8 characters")
+            password_again = st.text_input("Type the password again", type="password")
+            pressed = st.form_submit_button("Create account", type="primary")
+        if pressed:
+            taken = storage.load_data().keys()
+            problems = budget.check_new_account(new_username, new_password, password_again, taken)
+            if len(problems) > 0:
+                for problem in problems:
+                    st.error(problem)
+            else:
+                username = budget.clean_username(new_username)
+                storage.create_account(username, budget.hash_password(new_password))
+                st.session_state["username"] = username
+                st.rerun()
 
 
 def show_this_week(username):
