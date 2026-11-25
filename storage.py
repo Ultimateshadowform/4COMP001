@@ -19,15 +19,22 @@ def save_data(data, filename=DATA_FILE):
 
 
 def get_user(username, filename=DATA_FILE):
-    pass
+    """Give back user details, or None if there is no user with that name."""
+    return load_data(filename).get(username)
 
 
 def create_account(username, password_hash, filename=DATA_FILE):
-    pass
+    """Save a new user. They start with no budget and no spending."""
+    data = load_data(filename)
+    data[username] = {"password_hash": password_hash, "weekly_budget": 0, "spending": []}
+    save_data(data, filename)
 
 
 def set_budget(username, weekly_budget, filename=DATA_FILE):
-    pass
+    """Change a users weekly budget."""
+    data = load_data(filename)
+    data[username]["weekly_budget"] = weekly_budget
+    save_data(data, filename)
 
 
 def add_spending(username, amount, category, spent_on, note, filename=DATA_FILE):
